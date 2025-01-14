@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'screens/course_screen.dart';
-import 'screens/quiz_screen.dart';
 import 'services/chatbot_service.dart';
+import 'screens/index_screen.dart';
+import 'screens/courses_view_screen.dart';
 
 void main() {
   final chatbotService = ChatbotService(apiKey: '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');
@@ -20,7 +21,12 @@ class SmartTeachingApp extends StatelessWidget {
     return MaterialApp(
       title: 'Smart Teaching App',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: CourseScreen(chatbotService: chatbotService), // Start with Course Page
+      initialRoute: '/',
+      routes: {
+        '/': (context) => IndexScreen(),
+        '/courses': (context) => CourseScreen(chatbotService: chatbotService), // Start with Course Page
+        '/course_view': (context) => CoursesView(),
+      },
     );
   }
 }

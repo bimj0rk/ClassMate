@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:classmate/screens/quiz_screen.dart';
 import 'package:classmate/services/chatbot_service.dart';
+import 'package:classmate/widgets/navbar.dart';
 
 class CourseScreen extends StatelessWidget {
   final ChatbotService chatbotService;
@@ -10,7 +11,7 @@ class CourseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Course Page')),
+       appBar: const Navbar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

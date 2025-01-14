@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:classmate/services/chatbot_service.dart';
+import 'package:classmate/widgets/navbar.dart';
 
 class QuizScreen extends StatefulWidget {
   final ChatbotService chatbotService;
@@ -61,7 +62,7 @@ class _QuizPageState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Quiz Page')),
+      appBar: const Navbar(),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : Padding(
