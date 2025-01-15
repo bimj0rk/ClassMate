@@ -19,7 +19,7 @@ class CoursesView extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ListTile(
-              title: const Text('Course #1 - Flutter Basics'),
+              title: const Text('Systems Engineering'),
               trailing: const Icon(Icons.arrow_forward),
               onTap: () => Navigator.pushNamed(context, '/courses'),
             ),

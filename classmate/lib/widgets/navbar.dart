@@ -6,7 +6,11 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('ClassMate'),
+      title: Image.asset(
+        'assets/logo.png',
+        height: 40,
+        fit: BoxFit.contain,
+      ),
       actions: [
         TextButton(
           onPressed: () => Navigator.pushNamed(context, '/'),

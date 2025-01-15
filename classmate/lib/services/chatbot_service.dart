@@ -4,27 +4,21 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:http/http.dart' as http;
 
-/// Service for extracting text from PDF
 class ChatbotService {
   final String apiKey;
 
   ChatbotService({required this.apiKey});
 
-  /// Extracts text from a PDF file located in the assets folder
   Future<String> extractTextFromPdf(String pdfPath) async {
     try {
-      // Load the PDF file as ByteData
       final ByteData bytes = await rootBundle.load(pdfPath);
       final Uint8List pdfData = bytes.buffer.asUint8List();
 
-      // Load the PDF document
       final PdfDocument document = PdfDocument(inputBytes: pdfData);
 
-      // Use PdfTextExtractor to extract text from the entire document
       final PdfTextExtractor textExtractor = PdfTextExtractor(document);
       final String extractedText = textExtractor.extractText();
 
-      // Dispose the document after use
       document.dispose();
 
       return extractedText.trim();
@@ -34,13 +28,10 @@ class ChatbotService {
     }
   }
 
-/// Sends the quiz data and course material to the chatbot and fetches feedback
-/// Sends the quiz data and course material to the chatbot and fetches feedback
 Future<String> fetchChatbotFeedback({
   required List<Map<String, String?>> quizAnswers,
   required String courseMaterial,
 }) async {
-  // Construct the messages for the chatbot
   final List<Map<String, dynamic>> messages = [
     {
       "role": "system",
@@ -60,7 +51,7 @@ Future<String> fetchChatbotFeedback({
         'Authorization': 'Bearer $apiKey',
       },
       body: jsonEncode({
-        'model': 'gpt-4o-mini', // Use the correct model
+        'model': 'gpt-4o-mini',
         'messages': messages,
         'max_tokens': 500,
       }),
@@ -98,9 +89,9 @@ Course Material:
 $courseMaterial
 
 Using this information, please provide:
-1. A grade for the student based on their answers.
-2. Detailed feedback on each question.
-3. Recommendations for further study, including videos and articles.
+1. A grade for the student based on their answers (partial grading is allowed).
+2. Detailed feedback on each question, with references from the course material.
+3. Recommendations for further study, including links to videos and articles.
 ''';
   }
 }

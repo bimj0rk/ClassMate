@@ -5,8 +5,7 @@ import 'screens/index_screen.dart';
 import 'screens/courses_view_screen.dart';
 
 void main() {
-  final chatbotService = ChatbotService(apiKey: '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');
-
+  final chatbotService = ChatbotService(apiKey: 'insert api key here');
 
   runApp(SmartTeachingApp(chatbotService: chatbotService));
 }
@@ -19,12 +18,12 @@ class SmartTeachingApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Smart Teaching App',
+      title: 'ClassMate',
       theme: ThemeData(primarySwatch: Colors.blue),
       initialRoute: '/',
       routes: {
         '/': (context) => IndexScreen(),
-        '/courses': (context) => CourseScreen(chatbotService: chatbotService), // Start with Course Page
+        '/courses': (context) => CourseScreen(chatbotService: chatbotService),
         '/course_view': (context) => CoursesView(),
       },
     );

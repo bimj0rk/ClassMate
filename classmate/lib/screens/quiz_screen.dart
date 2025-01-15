@@ -14,12 +14,16 @@ class QuizScreen extends StatefulWidget {
 class _QuizPageState extends State<QuizScreen> {
   final List<Map<String, String>> quizQuestions = [
     {
-      'question': 'What is Flutter?',
-      'correctAnswer': 'A UI toolkit for building natively compiled apps.',
+      'question': 'What are the types of Behaviour Diagrams?',
+      'correctAnswer': 'Activty Diagram, State Diagram, Sequence Diagram, Use Case Diagram',
     },
     {
-      'question': 'What is Dart?',
-      'correctAnswer': 'A programming language optimized for building fast apps.',
+      'question': 'What are the types of Dependencies used for Package Diagrams?',
+      'correctAnswer': 'Use, Refine, Allocate, Trace',
+    },
+    {
+      'question': 'What are the types of Requirement Relationships?',
+      'correctAnswer': 'Derive, Satisfy, Verify, Refine, Copy, Trace',
     },
   ];
 
@@ -28,13 +32,11 @@ class _QuizPageState extends State<QuizScreen> {
   String feedback = '';
   bool isLoading = false;
 
-  /// Submits the quiz and gets feedback from the chatbot
   Future<void> submitQuiz() async {
     setState(() {
       isLoading = true;
     });
 
-    // Prepare quiz data
     List<Map<String, String?>> quizData = [];
     for (int i = 0; i < quizQuestions.length; i++) {
       quizData.add({
@@ -44,10 +46,8 @@ class _QuizPageState extends State<QuizScreen> {
       });
     }
 
-    // Extract course material
     String courseMaterial = await widget.chatbotService.extractTextFromPdf('course_material.pdf');
 
-    // Fetch chatbot feedback
     String chatbotResponse = await widget.chatbotService.fetchChatbotFeedback(
       quizAnswers: quizData,
       courseMaterial: courseMaterial,
@@ -71,7 +71,7 @@ class _QuizPageState extends State<QuizScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Assignment: Quiz on Flutter Basics',
+                    'Assignment: Quiz on SysML Diagrams',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),

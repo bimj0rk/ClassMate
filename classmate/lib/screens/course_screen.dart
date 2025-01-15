@@ -18,19 +18,20 @@ class CourseScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Course: Introduction to Flutter',
+              'Course: Systems Engineering',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             const Text(
-              'This course will teach you the basics of Flutter development. '
+              'This course will teach you the basics of Systems Engineering methods. '
               'Complete the assignment below to test your understanding.',
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to the quiz page
+             ListTile(
+              title: const Text('Quiz - SysML Diagrams'),
+              trailing: const Icon(Icons.arrow_forward),
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -38,7 +39,6 @@ class CourseScreen extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('Go to Assignment'),
             ),
           ],
         ),
